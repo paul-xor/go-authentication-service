@@ -14,53 +14,14 @@ const dbTimeout = time.Second * 3
 
 var db *sql.DB
 
-type PostgresPepository struct {
+type PostgresRepository struct {
 	Conn *sql.DB
 }
 
-// DeleteByID implements Repository.
-func (p *PostgresPepository) DeleteByID(id int) error {
-	panic("unimplemented")
-}
-
-// GetAll implements Repository.
-func (p *PostgresPepository) GetAll() ([]*User, error) {
-	panic("unimplemented")
-}
-
-// GetByEmail implements Repository.
-func (p *PostgresPepository) GetByEmail(email string) (*User, error) {
-	panic("unimplemented")
-}
-
-// GetOne implements Repository.
-func (p *PostgresPepository) GetOne(id int) (*User, error) {
-	panic("unimplemented")
-}
-
-// Insert implements Repository.
-func (p *PostgresPepository) Insert(user User) (int, error) {
-	panic("unimplemented")
-}
-
-// PasswordMatches implements Repository.
-func (p *PostgresPepository) PasswordMatches(plainText string, user User) (bool, error) {
-	panic("unimplemented")
-}
-
-// ResetPassword implements Repository.
-func (p *PostgresPepository) ResetPassword(password string, user User) error {
-	panic("unimplemented")
-}
-
-// Update implements Repository.
-func (p *PostgresPepository) Update(user User) error {
-	panic("unimplemented")
-}
-
-func NewPostgresRepository(db *sql.DB) *PostgresPepository {
-	return &PostgresPepository{
-		Conn: db,
+func NewPostgresRepository(pool *sql.DB) *PostgresRepository {
+	db = pool
+	return &PostgresRepository{
+		Conn: pool,
 	}
 }
 
